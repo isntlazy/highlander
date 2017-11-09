@@ -14,3 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get(trans('routes.about'), ['as' => 'about', 'uses' => 'PageController@getAboutPage']);
+Auth::routes();
+
+Route::group(['prefix' => 'adm', 'middleware' => ['auth', 'admin']], function()
+{
+    Route::any('/', function() {
+        return view('admin.admin');
+    });
+
+    Route::any('{all}', function() {
+        return view('admin.admin');
+    })->where(['all' => '.*']);
+});

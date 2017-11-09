@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +12,14 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(Request $request)
     {
-        //
+        if (!array_key_exists($request->segment(1), config('translatable.locales')) ) {
+            app()->setLocale('uk');
+        } else {
+            // Set the app locale according to the URL
+            app()->setLocale($request->segment(1));
+        }
     }
 
     /**
