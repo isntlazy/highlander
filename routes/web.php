@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    //todo remove it and start working with frontend
     return view('welcome');
 });
 
@@ -19,6 +20,7 @@ Route::get('/', function () {
 Route::get(trans('routes.about'), ['as' => 'about', 'uses' => 'PageController@getAboutPage']);
 Auth::routes();
 
+// Роутінг адмінки обробляє vue.js
 Route::group(['prefix' => 'adm', 'middleware' => ['auth', 'admin']], function()
 {
     Route::any('/', function() {

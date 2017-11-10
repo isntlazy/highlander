@@ -4,14 +4,19 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Example from '../components/Example'
+import Dashboard from '../components/Dashboard'
+import Brands from '../components/Brands'
 
 export default new Router({
 	mode: 'history',
 	routes: [
 		{
 			path: '/adm',
-			component: Example
+			component: Dashboard
+		},
+		{
+			path: '/adm/brands',
+			component: Brands
 		}
 	]
 })
