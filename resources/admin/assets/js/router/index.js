@@ -5,7 +5,8 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Dashboard from '../components/Dashboard'
-import Brands from '../components/Brands'
+import Brands from '../components/Brands/Brands'
+import BrandAdd from '../components/Brands/BrandAdd'
 
 export default new Router({
 	mode: 'history',
@@ -17,6 +18,10 @@ export default new Router({
 		{
 			path: '/adm/brands',
 			component: Brands
+		},
+		{
+			path: '/adm/brands/add',
+			component: BrandAdd
 		}
 	]
 })

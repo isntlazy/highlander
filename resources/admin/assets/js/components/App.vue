@@ -2,7 +2,9 @@
     <div id="app">
         <v-app id="inspire">
             <v-navigation-drawer
-                    permanent
+                    persistent
+                    v-model="drawer"
+                    enable-resize-watcher
                     clipped
                     class="grey lighten-4"
                     app
@@ -60,13 +62,16 @@
                 </v-list>
             </v-navigation-drawer>
             <v-toolbar color="orange darken-1" app absolute clipped-left>
+                <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
                 <span class="title">Панель&nbsp;<span class="text">Управління</span></span>
             </v-toolbar>
             <main>
                 <v-content>
-                    <v-container fluid fill-height class="grey lighten-4">
-                        <v-layout justify-center align-center>
-                            <router-view></router-view>
+                    <v-container grid-list-md text-xs-center class="grey lighten-4">
+                        <v-layout row wrap>
+                            <v-flex xs12>
+                                <router-view></router-view>
+                            </v-flex>
 
                         </v-layout>
                     </v-container>
@@ -117,7 +122,8 @@
 //				{ icon: 'help', text: 'Допомога' },
 //				{ icon: 'phonelink', text: 'App downloads' },
 //				{ icon: 'keyboard', text: 'Keyboard shortcuts' }
-			]
+			],
+            drawer: true
 		}),
 		props: {
 			source: String
